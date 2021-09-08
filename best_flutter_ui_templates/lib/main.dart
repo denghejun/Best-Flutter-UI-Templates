@@ -2,6 +2,9 @@ import 'dart:io';
 import 'package:best_flutter_ui_templates/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_login/flutter_login.dart';
+import 'dashboard_screen.dart';
+import 'login_screen.dart';
 import 'navigation_home_screen.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 
@@ -29,11 +32,19 @@ class MyApp extends StatelessWidget {
       title: 'Flutter UI',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: AppTheme.textTheme,
-        platform: TargetPlatform.iOS,
-      ),
+          primarySwatch: Colors.blue,
+          textTheme: AppTheme.textTheme,
+          platform: TargetPlatform.iOS,
+          buttonColor: Colors.lightBlue,
+          buttonTheme: ButtonThemeData(
+            buttonColor: Colors.lightBlue,
+              colorScheme: ColorScheme.dark(), splashColor: Colors.indigo)),
       home: NavigationHomeScreen(),
+      initialRoute: LoginScreen.routeName,
+      routes: {
+        LoginScreen.routeName: (context) => LoginScreen(),
+        DashboardScreen.routeName: (context) => DashboardScreen(),
+      },
     );
   }
 }
